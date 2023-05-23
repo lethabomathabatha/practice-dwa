@@ -10,3 +10,14 @@ Dynamic Web Apps lecture and practice folder.
 
 ### code tips:
 - create a unique identifier - UUID
+
+
+### JSDoc
+- @param and @returns
+- // @ts-check helps pick up errors in VSCode
+- if something is optional, put in square brackets
+
+### @typedef / @prop
+- @typedef {'Cape Town' | 'Johannesburg'} eg
+- @typedef { 'high' | 'medium' | 'low'} Urgency - the priority that the tasks should take 
+- another e.g.: @prop {string} id, @prop {boolean} completed
