@@ -55,20 +55,43 @@ counter.display();
  * @prop {} decrease
  * @prop {} display
  */
-const createCounter = () => {
+
+/**
+ * @param {string} label - The actual value being measured
+ * @returns {Counter}
+ */
+const createCounter = (label) => {
     let value = 1;
+    let innerLabel = label;
 
     const increase = (amount) => { value += amount || 1 }
     const decrease = (amount) => { value -= amount || 1 }
-    const display = () => { console.log(value) }    
+
+    const display = () => console.log(`${value} ${label}`);    
 
     return {
         display,
         increase,
-        decrease
+        decrease,
+
+        get label () {
+            return innerLabel
+        }
+        
+        set label (newLabel) { 
+            innerLabel = `${newLabel} is the label!`
+        }
     }
 }
 
-const counter = createCounter();
+const temperature = createCounter("Celsius");
+const humidity = createCounter("Humidity Factor"); 
 
-counter.increase();
+humidity.increase(20);
+temperature.decrease(3);
+temperature.increase(10);
+
+temperature.label = "Fahrenheit";
+
+humidity.display();
+temperature.display();
