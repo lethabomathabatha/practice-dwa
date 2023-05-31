@@ -95,3 +95,71 @@ temperature.label = "Fahrenheit";
 
 humidity.display();
 temperature.display();
+
+
+// Encapsulation example:
+class Car {
+    constructor() {
+    this.speed = 0;
+    }
+    
+    accelerate() {
+    this.speed += 10;
+    }
+    
+    brake() {
+    this.speed -= 5;
+    }
+    
+    getSpeed() {
+    return this.speed;
+    }
+    }
+    
+    const myCar = new Car();
+    myCar.accelerate();
+    console.log(myCar.getSpeed()); // Output: 10
+    
+    /*
+    In this example, the Car class encapsulates the speed variable and the methods accelerate, brake, and getSpeed. 
+    The speed variable is hidden and can only be accessed through the public method getSpeed. This encapsulation provides 
+    control over how the speed variable is modified and accessed.
+    */
+
+// Abstraction example:
+class Shape {
+    constructor() {
+    if (this.constructor === Shape) {
+    throw new Error('Abstract classes cannot be instantiated.');
+    }
+    }
+    
+    calculateArea() {
+    throw new Error('Method calculateArea must be implemented.');
+    }
+    }
+    
+    class Rectangle extends Shape {
+    constructor(width, height) {
+    super();
+    this.width = width;
+    this.height = height;
+    }
+    
+    calculateArea() {
+    return this.width * this.height;
+    }
+    }
+    
+    const rectangle = new Rectangle(5, 3);
+    console.log(rectangle.calculateArea()); // Output: 15
+    
+    /*
+    In this example, the Shape class is an abstract class that defines the common behavior of shapes but does not provide an 
+    implementation for calculateArea. The Rectangle class extends the Shape class and provides an implementation for calculateArea. 
+    The Shape class serves as an abstraction, defining a contract (the calculateArea method) that derived classes must implement. 
+    This abstraction allows us to work with shapes in a generalized way without worrying about the specific details of each shape.
+    
+    To summarize, encapsulation focuses on hiding and controlling access to data and methods within an object, while abstraction 
+    involves simplifying complex systems by defining common interfaces and leaving the implementation details to derived classes.
+    */
