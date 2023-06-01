@@ -163,3 +163,59 @@ class Shape {
     To summarize, encapsulation focuses on hiding and controlling access to data and methods within an object, while abstraction 
     involves simplifying complex systems by defining common interfaces and leaving the implementation details to derived classes.
     */
+
+   // getters and setters
+   const person = {
+    firstName: 'John',
+    lastName: 'Doe',
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`
+    },
+    set fullName(value) { // value is whatever will be on the right side of the = operator
+        const parts = value.split(' ');
+        this.firstName = parts[0];
+        this.lastName = parts[1];
+    }
+   };
+
+   // getters => access properties in an object
+   // setters => mutate properties in an object
+
+   person.fullName = 'Peter Pan';
+   console.log(person);
+
+   // factory functions - produce objects
+
+function createCircle(radius) {
+    return {
+    radius, // removing the value and simply keeping the key
+    draw() {
+        console.log('draw');
+    }
+    };
+}
+
+const circle1 = createCircle(1);
+console.log(circle1)
+
+const circle2 = createCircle(2);
+console.log(circle2)
+
+// Classes in JavaScript - define properties and/or methods(functions that operate on objects)
+
+class Car{
+
+    drive(){
+        console.log('You drive the car');
+    }
+    brake(){
+        console.log('You step on the brake');
+    }
+}
+
+// car object named 'car'
+let car1 = new Car();
+let car2 = new Car();
+
+car1.drive(); // You drive the car
+car2.brake(); // You step on the brake
