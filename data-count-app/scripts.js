@@ -219,3 +219,167 @@ let car2 = new Car();
 
 car1.drive(); // You drive the car
 car2.brake(); // You step on the brake
+
+
+
+/*
+// inheritance in JavaScript: "the concept of creating new objects based on existing objects.  It allows you to define a new object (child) based on an existing object (parent), inheriting its properties and methods."
+// children classes inherit from parent classes 
+
+
+// the Animal class is a parent class
+class Animal{
+    constructor(){
+        this.alive = true;
+    }
+    eat(){
+        console.log("This animal is eating");
+    }
+}
+
+class Rabbit extends Animal{ // the Rabbit class is a child class of the Animal class, and inherits from the Animal class
+    run() {
+        console.log("This rabbit is running");
+    }
+}
+class Fish extends Animal{
+    swim() {
+        console.log("This fish is swimming");
+    }
+}
+class Hawk extends Animal{
+    fly() {
+        console.log("This hawk is flying");
+    }
+}
+
+// instances
+let rabbit = new Rabbit();
+let fish = new Fish();
+let hawk = new Hawk();
+
+console.log(rabbit.alive);
+rabbit.eat(); // This rabbit is eating
+rabbit.run(); 
+hawk.fly();
+fish.swim();
+*/
+
+/*
+const me = {
+    talk() {
+        return "Talking";
+    }
+}
+
+const you = {
+    talk() {
+        return "Talking";
+    }
+}
+
+me.talk(); // Talking
+you.talk(); // Talking
+*/
+
+/*
+class Person {
+    talk() {
+        return "Talking";
+    }
+}
+
+const me = new Person();
+const you = new Person();
+
+me.talk(); // Talking
+console.log(you.talk());
+
+me
+
+Person.prototype === me.__proto__ // true
+
+// how you would change the prototype
+Person.prototype.talk = function() {
+    return "New and improved talking";
+}
+
+me.talk(); // New and improved talking
+*/
+
+// syntantic sugar eg: the class syntax replaces the objects, prototypes and inheritance syntax
+/*
+function Person() {
+    this.talk = function() {
+        return "Talking";
+    }
+}
+
+const me = new Person();
+me.talk(); // Talking
+*/
+
+/*
+function Person() {
+    this.age = 12;
+}
+
+const me = new Person();
+me
+Person.age = 40;
+me // me still has the age of 12
+*/
+
+/*
+class Person {
+    talk() {
+        return "Talking";
+    }
+}
+
+const me = new Person();
+me.talk(); // Talking
+
+class SuperHuman extends Person {
+    fly() {
+        return "Flying";
+    }
+}
+
+const you = new SuperHuman();
+you.fly(); // Flying
+you.talk(); // Talking
+
+me.fly(); // undefined
+*/
+
+
+// pure objects
+/*const person = {
+    talk() {
+        return "Talking";
+    }
+}
+
+// create a me object that is an instance of person and can use the talk function
+const me = Object.create(person);
+
+me.talk(); // Talking
+*/
+
+
+const person = {
+    talk() {
+        return "Talking";
+    },
+    fly() {
+        return "Flying";
+    }
+}
+
+const me = {}
+me  
+
+Object.setPrototypeOf(me, person); // first parameter is the object(instance), second is the prototype(where you want to inherit from)
+me.talk(); // Talking
+me.fly(); // Flying
