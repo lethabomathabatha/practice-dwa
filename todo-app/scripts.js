@@ -5,7 +5,8 @@ import {html, render} from 'https://unpkg.com/lit-html?module';
  */
 const createView = (name) => {
     return html`
-        <div>Hello, your name is ${name}.</div>`
+        <div>Hello, your name is ${name}.</div>
+        `
 }
 
 const tree1 = createView('Lethabo');
