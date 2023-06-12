@@ -383,3 +383,90 @@ me
 Object.setPrototypeOf(me, person); // first parameter is the object(instance), second is the prototype(where you want to inherit from)
 me.talk(); // Talking
 me.fly(); // Flying
+
+/*
+const flyable = {
+    isFlying: false,
+    liftOff: () => {
+        this.isFlying = true;
+    },
+    land: () => {
+      this.isFlying = false;  
+    }
+}
+
+const metal = {
+    material: "metal",
+    tap() {
+        console.log('clang clang');
+    }
+}
+
+const feathers = {
+    material: "soft",
+    tap() {
+        console.log('puff puff');
+    }
+}
+
+const airplane = {
+    ...flyable,
+    ...metal,
+}
+
+const duck = {
+    ...flyable,
+    ...feathers,
+}
+
+airplane.liftOff(); 
+airplane.tap(); // clang clang
+
+duck.liftOff();
+duck.land();
+duck.liftOff();
+duck.land();
+duck.tap(); // puff puff
+*/
+
+const button = document.querySelector("button");
+
+function toggle() {
+    button.classList.toggle("altColor");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+const button = document.querySelector("button");
+
+function toggle() {
+    button.classList.toggle("altColor");
+}
+
+// toggle();
+
+button.addEventListener("click", togcagle);
+*/
+
+// asynchronous programming: 
+
+function firstAction(callback) {
+    console.log("First action");
+    setTimeout(callback, 3000);
+}
+
+function secondAction() {
+    console.log("Second action");
+}
+
+setTimeout (firstAction(secondAction), 5000);
