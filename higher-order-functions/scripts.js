@@ -279,9 +279,11 @@ const max = numbers.reduce((accumulator, currentValue) => {
 
 console.log(max);
 
-// reducer to find how many times the letter 'c' comes up in titles
+// reducer to find how many times the letter 'c' comes up in titles, only if it has a due date
 const countResult = dailyTasks.reduce(
-    (accumulator, { title }) => {
+    (accumulator, { title, due }) => {
+        if (due) return accumulator
+        
         const titleAsArray = title.split('');
         const totalCs = titleAsArray.filter(char => char.toLowerCase() === 'c');
         return accumulator + totalCs.length
