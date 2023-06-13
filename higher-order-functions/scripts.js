@@ -107,3 +107,72 @@ function studentName(firstName) {
   const array = ['Hello', 'World', '!'];
   const mergedString = array.join(' ');
   console.log(mergedString);
+
+  /*
+  // HOF 'without composition'
+  const createCalc = operator => { 
+    const innerFunction = (numbers) => {
+        if (numbers.length < 2) {
+            throw new Error('Numbers needs to be an array of two items')
+        }
+
+    }
+      if (typeof operator !== 'function') {
+          throw new Error('Operator must be a function');
+      } const result = numbers.reduce(operator);
+      
+      return result
+  }
+
+  const add = createCalc((num1, num2) => num1 + num2);
+  add([1,2,3,4,5,6])
+  console.log(add);
+ 
+  calculate(5, 2, (num1, num2) => (num1 + num1) * num2);
+  console.log(calculate(10, 20, '+'));
+  */
+
+ // HOF that come with arrays
+
+ '18a19431-0e0f-422d-9be6-50e4e07c7cc0'
+ 'bba1c69e-1c61-43c2-bac0-ebd1837dfa6b'
+ '16a6cd03-ac0a-495b-9664-e71330410762'
+ '88c2587c-c052-4aa0-85cb-59bd49bf41a5'
+ 'c23747bf-4d25-4500-a9f5-103d2158676e'
+
+ const dailyTasks = [
+    {
+        id: '18a19431-0e0f-422d-9be6-50e4e07c7cc0',
+        title: 'Wash the dog',
+        urgency: 'high',
+        due: null
+    },
+    {
+        id: 'bba1c69e-1c61-43c2-bac0-ebd1837dfa6b',
+        title: 'Celebrate New Years Day',
+        urgency: 'low',
+        due: new Date ('01/01/2024')
+    },
+    {
+        id: '16a6cd03-ac0a-495b-9664-e71330410762',
+        title: 'Learn JavaScript',
+        urgency: 'normal',
+        due: new Date ('01/01/2025')
+    },
+    {
+        id: '88c2587c-c052-4aa0-85cb-59bd49bf41a5',
+        title: 'Clean room',
+        urgency: 'low',
+        due: null
+    },
+ ]
+
+ // using 'find' to find the first task with the 'low' urgency
+ const resultLowUrgency = dailyTasks.find((item) => {
+    return item.urgency === 'low' && item.due === null
+}); 
+
+console.log(resultLowUrgency)
+
+// console log all the tasks
+dailyTasks.forEach(console.log)
