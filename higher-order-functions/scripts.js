@@ -260,3 +260,21 @@ const sortedTasksOrder = dailyTasks.sort((a,b) => {
 })
 
 console.log(sortedTasksOrder)
+
+// reduce method
+// The callback function is invoked with four arguments: the accumulator, the current value, the current index, and the array being reduced.
+
+const numbers = [1, 2, 3, 4, 5];
+
+const sum = numbers.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue;
+}, 0); // currentValue is 0, meaning nothing is added
+
+console.log(sum)
+
+// Finding the maximum number using reduce
+const max = numbers.reduce((accumulator, currentValue) => {
+    return Math.max(accumulator, currentValue);
+});
+
+console.log(max);
