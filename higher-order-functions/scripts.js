@@ -278,3 +278,15 @@ const max = numbers.reduce((accumulator, currentValue) => {
 });
 
 console.log(max);
+
+// reducer to find how many times the letter 'c' comes up in titles
+const countResult = dailyTasks.reduce(
+    (accumulator, { title }) => {
+        const titleAsArray = title.split('');
+        const totalCs = titleAsArray.filter(char => char.toLowerCase() === 'c');
+        return accumulator + totalCs.length
+    },
+        0
+);
+
+console.log(countResult)
