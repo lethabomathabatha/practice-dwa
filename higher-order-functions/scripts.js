@@ -1,3 +1,4 @@
+
 import {html, render} from 'https://unpkg.com/lit-html?module';
 
 
@@ -35,7 +36,7 @@ const tasks = [
 const completedTasks = tasks.filter((task) =>  task.completed);
 const incompleteTasks = tasks.filter((task) => !task.completed);
 const taskNotes = tasks.map((task) => task.note);
-
+const tasksAsArray = tasks.flatMap((task) => task.completed);
 
 console.log('Completed tasks: ');
 console.log(completedTasks);
@@ -46,6 +47,9 @@ console.log(incompleteTasks);
 console.log('Task notes: ');
 console.log(taskNotes);
 
+console.log('Tasks As Array: ');
+console.log(tasksAsArray);
+
 
 
 /**
@@ -55,11 +59,16 @@ console.log(taskNotes);
  * @param {boolean} completed - Whether the task is completed or not.
  * @return {string} The HTML list item element as a string.
  */
-const createTaskList = (tasks) => {
+const createTaskList = (task) => {
     return html `
-        <li>${tasks.title + ' - ' + tasks.completed + ' '}<button>${tasks.id}</button></li>
-    
+    <section id="task-items">
+        <li>${task.title + ' - ' + task.completed + ' '}<button>${task.id}</button></li>
+    </section>
+
         <style>
+            #task-items {
+                padding: 0.5rem;
+            }
             li {
                 color: blue;
                 font-size: 1.2rem;
@@ -74,10 +83,27 @@ const createTaskList = (tasks) => {
 }
 createTaskList(tasks);
 
+
+
 // when the buttons are clicked, the task note should appear as an overlay
 
 
 const taskListElement = document.getElementById('taskList');
+
 const taskMarkup = tasks.map((task) => createTaskList(task));
 
 render(taskMarkup, taskListElement);
+
+
+function studentName(firstName) {
+    return function(lastName) {
+      return firstName + lastName;
+    };
+  }
+  
+  const add5 = studentName('Lele');
+  console.log(add5(2));
+
+  const array = ['Hello', 'World', '!'];
+  const mergedString = array.join(' ');
+  console.log(mergedString);
