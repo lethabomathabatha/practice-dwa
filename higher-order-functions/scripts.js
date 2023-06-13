@@ -134,11 +134,11 @@ function studentName(firstName) {
 
  // HOF that come with arrays
 
- '18a19431-0e0f-422d-9be6-50e4e07c7cc0'
- 'bba1c69e-1c61-43c2-bac0-ebd1837dfa6b'
- '16a6cd03-ac0a-495b-9664-e71330410762'
- '88c2587c-c052-4aa0-85cb-59bd49bf41a5'
- 'c23747bf-4d25-4500-a9f5-103d2158676e'
+//  '18a19431-0e0f-422d-9be6-50e4e07c7cc0'
+//  'bba1c69e-1c61-43c2-bac0-ebd1837dfa6b'
+//  '16a6cd03-ac0a-495b-9664-e71330410762'
+//  '88c2587c-c052-4aa0-85cb-59bd49bf41a5'
+//  'c23747bf-4d25-4500-a9f5-103d2158676e'
 
  const dailyTasks = [
     {
@@ -168,7 +168,8 @@ function studentName(firstName) {
  ]
 
  // using 'find' to find the first task with the 'low' urgency
- const resultLowUrgency = dailyTasks.find((item) => {
+ const resultLowUrgency = dailyTasks.find((item, index) => {
+    if (index > 1) return true
     return item.urgency === 'low' && item.due === null
 }); 
 
@@ -176,3 +177,86 @@ console.log(resultLowUrgency)
 
 // console log all the tasks
 dailyTasks.forEach(console.log)
+
+// add onto each array
+const resultAddedTasks = dailyTasks.map((item) => {
+    return {
+        value: item,
+        isDailyTask: true,
+        hasDash: typeof item === 'string' && item.includes('-')
+    }
+})
+
+console.log(resultAddedTasks)
+
+// populate html body
+const dailyTasksList = dailyTasks.map(item => {
+    return `<li>${item.title} - ${item.urgency}</li>`
+}) 
+
+
+document.body.innerHTML = `
+    <ul>
+        ${dailyTasksList.join(' ')}
+    </ul>
+`
+
+// checks for urgent tasks
+const hasUrgency = (value) => (item => item.urgency === value)
+
+const checkItems = (array, operation) => operation.map(fn => fn(array))
+console.log(checkItems(
+    dailyTasks, 
+    [
+        array => array.some(hasUrgency('high')),
+        array => array.some(hasUrgency('normal')),
+        array => array.some(hasUrgency('low')),
+]))
+
+
+console.log({
+    hasHigh: dailyTasks.some(hasUrgency('high')),
+    hasNormal: dailyTasks.some(hasUrgency('normal')),
+    hasLow: dailyTasks.some(hasUrgency('low')),
+})
+
+
+const hasUrgent = tasks.some(item => {
+    if(item.urgency === 'high') {
+        return true
+    }
+})
+
+console.log(hasUrgent)
+
+const tasksDue = dailyTasks.filter(item => !item.due)
+console.log(tasksDue)
+
+/*
+const sortedTasks = dailyTasks.toSorted((a,b) => {
+    if (a.due && !b.due) return 1;
+
+    const aDate = a.due.getTime() || 0; 
+    const bDate = b.due.getTime() || 0;
+
+    return aDate - bDate
+})
+
+console.log(sortedTasks)
+*/
+
+// sort by urgency
+const sortedTasks = dailyTasks.sort((a,b) => {
+    return a.urgency.localeCompare(b.urgency)
+})
+
+console.log(sortedTasks)
+
+// sort by urgency
+const ORDER = ['high', 'normal', 'low']
+
+const sortedTasksOrder = dailyTasks.sort((a,b) => {
+    return ORDER.indexOf(a.urgency) - ORDER.indexOf(b.urgency)
+})
+
+console.log(sortedTasksOrder)
